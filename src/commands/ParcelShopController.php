@@ -2,6 +2,7 @@
 
 namespace matejch\parcel\commands;
 
+use matejch\xmlhelper\XmlHelper;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\BaseConsole;

@@ -13,7 +13,7 @@
     "require": {
         "php": ">=7.2.0",
         "yiisoft/yii2": "~2.0.42",
-        "matejch/yii2-xmlhelper": "dev-main"
+        "matejch/yii2-xmlhelper": "1.0.0"
     },
     "config": {
         "process-timeout": 1800,
@@ -25,10 +25,6 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/Matej-ch/yii2-xmlHelper.git"
         }
     ],
     "autoload": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2a5202573509a61cecdec97b9893d08",
+    "content-hash": "acebdf8ada866b5fd121e65df7896934",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -198,6 +198,55 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/master"
             },
             "time": "2020-06-29T00:56:53+00:00"
+        },
+        {
+            "name": "matejch/yii2-xmlhelper",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Matej-ch/yii2-xmlHelper.git",
+                "reference": "da5a338d1a9c628d24e822b4d65615614295a570"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Matej-ch/yii2-xmlHelper/zipball/da5a338d1a9c628d24e822b4d65615614295a570",
+                "reference": "da5a338d1a9c628d24e822b4d65615614295a570",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-simplexml": "*",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "matejch\\xmlhelper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matej Ch",
+                    "email": "matejCH.work@gmail.com"
+                }
+            ],
+            "description": "Simple xml helper class for loading xml",
+            "keywords": [
+                "extension",
+                "helper",
+                "xml",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/Matej-ch/yii2-xmlHelper/issues",
+                "source": "https://github.com/Matej-ch/yii2-xmlHelper/tree/1.0.0"
+            },
+            "time": "2021-11-16T21:20:08+00:00"
         },
         {
             "name": "paragonie/random_compat",
