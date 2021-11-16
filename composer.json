@@ -1,0 +1,33 @@
+{
+    "name": "matej/yii2-parcel",
+    "description": "Module to work with slovak parcel service",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","parcel","soap","api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matej Chalachan",
+            "email": "matejCH.work@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "yiisoft/yii2": "~2.0.42"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "matejch\\parcel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "matejch\\parcel\\tests\\": "tests/"
+        }
+    }
+}
