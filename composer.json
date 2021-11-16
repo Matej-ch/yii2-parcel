@@ -1,5 +1,5 @@
 {
-    "name": "matej/yii2-parcel",
+    "name": "matejch/yii2-parcel",
     "description": "Module to work with slovak parcel service",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","parcel","soap","api"],
@@ -12,12 +12,23 @@
     ],
     "require": {
         "php": ">=7.2.0",
-        "yiisoft/yii2": "~2.0.42"
+        "yiisoft/yii2": "~2.0.42",
+        "matejch/yii2-xmlhelper": "dev-main"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
     },
     "repositories": [
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/Matej-ch/yii2-xmlHelper.git"
         }
     ],
     "autoload": {
