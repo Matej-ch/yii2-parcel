@@ -2,6 +2,7 @@
 
 namespace matejch\parcel\commands;
 
+use matejch\parcel\models\ParcelShop;
 use matejch\xmlhelper\XmlHelper;
 use yii\console\Controller;
 use yii\console\ExitCode;
@@ -10,10 +11,15 @@ use yii\helpers\Json;
 
 class ParcelShopController extends Controller
 {
-    public function actionInit()
+    /**
+     * Load parcel shops into table for future use
+     * @return int
+     * @throws \Exception
+     */
+    public function actionInit(): int
     {
         $parser = new XmlHelper();
-        $xml = FileHelper::fileGetContentsCurl($this->module->placeurl);
+        $xml = $this->fileGetContentsCurl($this->module->placeurl);
 
         $parsedData = $parser->parse($xml,'xml');
 
@@ -31,5 +37,19 @@ class ParcelShopController extends Controller
         }
 
         return ExitCode::OK;
+    }
+
+    private function fileGetContentsCurl($url)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $data = curl_exec($ch);
+        curl_close($ch);
+
+        return $data;
     }
 }

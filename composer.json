@@ -13,7 +13,9 @@
     "require": {
         "php": ">=7.2.0",
         "yiisoft/yii2": "~2.0.42",
-        "matejch/yii2-xmlhelper": "1.0.0"
+        "matejch/yii2-xmlhelper": "1.0.0",
+        "ext-curl": "*",
+        "ext-soap": "*"
     },
     "config": {
         "process-timeout": 1800,

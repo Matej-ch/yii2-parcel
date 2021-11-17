@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postcss:watch": "postcss src/web/css/assist.css -o src/web/css/assist.min.css --watch",
-    "postcss:compile": "postcss src/web/css/assist.css -o src/web/css/assist.min.css",
+    "postcss:watch": "postcss src/web/css/parcel.css -o src/web/css/parcel.min.css --watch",
+    "postcss:compile": "postcss src/web/css/parcel.css -o src/web/css/parcel.min.css",
     "babel:compile": "babel src/web/js/assist.js -o src/web/js/assist.min.js"
   },
   "keywords": [],
