@@ -2,6 +2,7 @@
 
 namespace matejch\parcel\controllers;
 
+use matejch\parcel\models\ParcelShipment;
 use matejch\parcel\Parcel;
 use Yii;
 use yii\filters\AccessControl;

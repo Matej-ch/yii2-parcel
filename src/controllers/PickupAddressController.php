@@ -2,6 +2,7 @@
 
 namespace matejch\parcel\controllers;
 
+use matejch\parcel\models\ParcelModelMap;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Json;

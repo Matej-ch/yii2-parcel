@@ -3,6 +3,7 @@
 namespace matejch\parcel\controllers;
 
 use matejch\parcel\api\ParcelApi;
+use matejch\parcel\models\ParcelAccount;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;

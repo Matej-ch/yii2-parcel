@@ -2,6 +2,16 @@
 
 namespace matejch\parcel\api;
 
+use matejch\parcel\models\CifCreateAndPrintResult;
+use matejch\parcel\models\CifCreateShipmentResult;
+use matejch\parcel\models\Cod;
+use matejch\parcel\models\DeliveryAddress;
+use matejch\parcel\models\MipWebserviceUploadResult;
+use matejch\parcel\models\ParcelShipment;
+use matejch\parcel\models\PickupAddress;
+use matejch\parcel\models\WebServicePackage;
+use matejch\parcel\models\WebServicePrintResult;
+use matejch\parcel\models\WebServiceShipment;
 use SoapClient;
 use SoapFault;
 use stdClass;
