@@ -2,6 +2,9 @@
 
 namespace matejch\parcel;
 
+use matejch\parcel\api\ParcelApi;
+use matejch\parcel\assets\ParcelAsset;
+use matejch\parcel\models\ParcelAccount;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Module;
@@ -44,7 +47,7 @@ class Parcel extends Module
         \Yii::setAlias('@matejch/parcel', __DIR__);
 
         if (Yii::$app instanceof Application) {
-            $this->controllerNamespace = 'app\modules\parcel\commands';
+            $this->controllerNamespace = 'matejch\parcel\commands';
         } else {
             ParcelAsset::register(Yii::$app->view);
         }
