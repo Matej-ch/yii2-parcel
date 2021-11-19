@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     return Html::a(Parcel::t('msg', 'set_default'),
                         ['update', 'id' => $model->id],
-                        ['class' => 'btn btn-default', 'data' => ['method' => 'post', 'params' =>
+                        ['class' => 'btn btn-default btn-light', 'data' => ['method' => 'post', 'params' =>
                             [
                                 'ParcelAccount[default]' => 1
                             ]

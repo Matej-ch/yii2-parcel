@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
+/** @property Parcel $module */
 class ParcelAccountController extends Controller
 {
     /**

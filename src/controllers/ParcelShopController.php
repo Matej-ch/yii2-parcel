@@ -12,6 +12,7 @@ use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
+/** @property Parcel $module */
 class ParcelShopController extends Controller
 {
     public function behaviors()
@@ -77,7 +78,7 @@ class ParcelShopController extends Controller
     public function actionPopulateRecords()
     {
         $parser = new XmlHelper();
-        $xml = $this->fileGetContentsCurl($this->module->placeurl);
+        $xml = $this->module->getContentFromUrl($this->module->placeurl);
 
         $parsedData = $parser->parse($xml,'xml');
         $message = '';
@@ -95,19 +96,5 @@ class ParcelShopController extends Controller
         }
         Yii::$app->session->setFlash('info',$message);
         return $this->redirect(Yii::$app->request->referrer);
-    }
-
-    private function fileGetContentsCurl($url)
-    {
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        $data = curl_exec($ch);
-        curl_close($ch);
-
-        return $data;
     }
 }

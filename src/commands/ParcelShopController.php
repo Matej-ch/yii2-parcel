@@ -3,12 +3,14 @@
 namespace matejch\parcel\commands;
 
 use matejch\parcel\models\ParcelShop;
+use matejch\parcel\Parcel;
 use matejch\xmlhelper\XmlHelper;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\BaseConsole;
 use yii\helpers\Json;
 
+/** @property Parcel $module */
 class ParcelShopController extends Controller
 {
     /**
@@ -19,7 +21,13 @@ class ParcelShopController extends Controller
     public function actionInit(): int
     {
         $parser = new XmlHelper();
-        $xml = $this->fileGetContentsCurl($this->module->placeurl);
+
+        if(!$this->module->placeurl) {
+            echo $this->ansiFormat("`placeurl` on set on module\n",BaseConsole::FG_GREEN);
+            return ExitCode::OK;
+        }
+
+        $xml = $this->module->getContentFromUrl($this->module->placeurl);
 
         $parsedData = $parser->parse($xml,'xml');
 
@@ -37,19 +45,5 @@ class ParcelShopController extends Controller
         }
 
         return ExitCode::OK;
-    }
-
-    private function fileGetContentsCurl($url)
-    {
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        $data = curl_exec($ch);
-        curl_close($ch);
-
-        return $data;
     }
 }
