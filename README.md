@@ -76,3 +76,9 @@ Your accounts
 ```php  
 parcel/parcel-shop/index
 ```
+
+Command for loading parcel delivery places exists
+
+```php
+./yii parcel/parcel-shop/init
+```

@@ -125,6 +125,9 @@ class Parcel extends Module
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        if(YII_ENV_DEV) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_URL, $url);
         $data = curl_exec($ch);
