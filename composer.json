@@ -15,7 +15,8 @@
         "yiisoft/yii2": "~2.0.42",
         "matejch/yii2-xmlhelper": "1.0.0",
         "ext-curl": "*",
-        "ext-soap": "*"
+        "ext-soap": "*",
+        "ext-openssl": "*"
     },
     "config": {
         "process-timeout": 1800,

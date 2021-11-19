@@ -118,8 +118,8 @@ class ParcelAccount extends ActiveRecord
         $hmac = substr($c, $ivLen, $sha2len=32);
         $cipherTextRaw = substr($c, $ivLen+$sha2len);
         $plainText = openssl_decrypt($cipherTextRaw, 'AES-256-CBC', $key, $options=OPENSSL_RAW_DATA, $iv);
-        $calcmac = hash_hmac('sha256', $cipherTextRaw, $key, $as_binary=true);
-        if (hash_equals($hmac, $calcmac)) {
+        $calcMac = hash_hmac('sha256', $cipherTextRaw, $key, $as_binary=true);
+        if (hash_equals($hmac, $calcMac)) {
             return $plainText;
         }
         return '';
@@ -134,16 +134,20 @@ class ParcelAccount extends ActiveRecord
     private function encryptData(string $data, string $key): string
     {
         $ivSize = openssl_cipher_iv_length('AES-128-CBC');
-        $iv = openssl_random_pseudo_bytes($ivSize);
+        $iv = openssl_random_pseudo_bytes($ivSize,$isSourceStrong);
+        if(false === $isSourceStrong || false === $iv) {
+            throw new \RuntimeException('IV generation failed');
+        }
         $cipherStringRaw = openssl_encrypt($data,'AES-256-CBC',$key,OPENSSL_RAW_DATA,$iv);
         $hmac = hash_hmac('sha256', $cipherStringRaw, $key, $as_binary=true);
         return base64_encode($iv . $hmac . $cipherStringRaw);
     }
 
-    public static function findDefault($id = null)
+    public static function findDefault($id = null): ?ParcelAccount
     {
-        if($id)
+        if($id) {
             return self::findOne(['id' => $id]);
+        }
 
         return self::findOne(['default' => 1]);
     }

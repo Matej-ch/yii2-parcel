@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\parcel\models\ParcelAccount */
+/* @var $model \matejch\parcel\models\ParcelAccount */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

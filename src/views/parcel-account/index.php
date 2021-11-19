@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('../templates/_navbar') ?>
 
     <p>
-        <?= Html::a('<i class="fas fa-plus" aria-hidden="true"></i> '.Parcel::t('msg','create'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fas fa-plus" aria-hidden="true"></i> ' . Parcel::t('msg', 'create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,30 +27,38 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
                 'buttons' => [
-                    'view' => function($url , $model) { return  Html::a('<i class="fas fa-eye"></i>',$url);},
-                    'update' => function($url , $model) { return Html::a('<i class="fas fa-pencil-alt"></i>',$url); },
-                    'delete' => function($url , $model) { return Html::a('<i class="fas fa-trash"></i>',$url,['data' => ['method' => 'post',
-                    'confirm' => Parcel::t('msg','delete_msg')]]);},
+                    'view' => static function ($url, $model) {
+                        return Html::a('<i class="fas fa-eye"></i>', $url);
+                    },
+                    'update' => static function ($url, $model) {
+                        return Html::a('<i class="fas fa-pencil-alt"></i>', $url);
+                    },
+                    'delete' => static function ($url, $model) {
+                        return Html::a('<i class="fas fa-trash"></i>', $url, ['data' => ['method' => 'post',
+                            'confirm' => Parcel::t('msg', 'delete_msg')]]);
+                    },
                 ]
             ],
             'name',
             'username:ntext',
             'password' => [
                 'attribute' => 'password',
-                'format'=>'text',
-                'value' => function($model) {return '******';},
+                'format' => 'text',
+                'value' => static function ($model) {
+                    return '******';
+                },
             ],
             'default' => [
                 'attribute' => 'default',
-                'format'=>'raw',
-                'value' => function($model) {
-                if($model->default) {
-                    return Parcel::t('model','default');
-                }
+                'format' => 'raw',
+                'value' => static function ($model) {
+                    if ($model->default) {
+                        return Parcel::t('model', 'default');
+                    }
 
-                    return Html::a(Parcel::t('msg','set_default'),
-                        ['update','id'=>$model->id],
-                        ['class' => 'btn btn-default','data' => ['method' => 'post','params'=>
+                    return Html::a(Parcel::t('msg', 'set_default'),
+                        ['update', 'id' => $model->id],
+                        ['class' => 'btn btn-default', 'data' => ['method' => 'post', 'params' =>
                             [
                                 'ParcelAccount[default]' => 1
                             ]
@@ -59,5 +67,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
         ],
-    ]); ?>
+    ]) ?>
 </div>

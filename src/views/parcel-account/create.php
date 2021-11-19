@@ -2,7 +2,7 @@
 
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\parcel\models\ParcelAccount */
+/* @var $model \matejch\parcel\models\ParcelAccount */
 
 use matejch\parcel\Parcel;
 
