@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist matejch/yii2-parcel "dev-master"
+php composer.phar require --prefer-dist matejch/yii2-parcel "dev-main"
 ```
 
 or add
 
 ```
-"matejch/yii2-parcel": "dev-master"
+"matejch/yii2-parcel": "dev-main"
 ```
 
 to the require section of your `composer.json` file.

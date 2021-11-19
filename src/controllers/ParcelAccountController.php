@@ -6,6 +6,7 @@ use matejch\parcel\models\ParcelAccount;
 use matejch\parcel\Parcel;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -54,19 +55,6 @@ class ParcelAccountController extends Controller
     }
 
     /**
-     * Displays a single SolverAccount model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
      * Creates a new SolverAccount model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -109,13 +97,20 @@ class ParcelAccountController extends Controller
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try {
+            $model = $this->findModel($id);
+            $model->delete();
+        } catch (NotFoundHttpException | StaleObjectException $e) {
+            Yii::$app->session->setFlash('danger',$e->getMessage());
+            return $this->redirect(Yii::$app->request->referrer);
+        }
 
-        return $this->redirect(['index']);
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**
@@ -131,6 +126,6 @@ class ParcelAccountController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException(Parcel::t('site/errmsg','no_page'));
+        throw new NotFoundHttpException(Parcel::t('msg','no_page'));
     }
 }

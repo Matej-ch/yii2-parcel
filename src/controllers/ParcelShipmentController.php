@@ -3,6 +3,7 @@
 namespace matejch\parcel\controllers;
 
 use matejch\parcel\models\ParcelShipment;
+use matejch\parcel\models\ParcelShipmentSearch;
 use matejch\parcel\Parcel;
 use Yii;
 use yii\filters\AccessControl;
@@ -66,7 +67,7 @@ class ParcelShipmentController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException(Parcel::t('msg','no_page'));
+        throw new NotFoundHttpException(Yii::t('parcel/msg','no_page'));
     }
 
     public function actionChangeState($id)
@@ -74,7 +75,7 @@ class ParcelShipmentController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         $model = $this->findModel($id);
         if(!$model->changeValidState()) {
-            return ['success' => false, 'message' => Yii::t('site/dhl', 'status_not_changed')];
+            return ['success' => false, 'message' => Yii::t('parcel/msg','status_not_changed')];
         }
 
         if($model->is_active) {
@@ -92,12 +93,12 @@ class ParcelShipmentController extends Controller
             return ['success' => true];
         }
 
-        return ['success' => false, 'message' => Yii::t('site/dhl', 'not_removed_from_protokol')];
+        return ['success' => false, 'message' => Yii::t('parcel/msg','not_removed_from_protokol')];
     }
 
     public function actionRemoveFromProtocolMultiple($ids)
     {
-        $cleanIDs = Helpers::cleanGetIds($ids);
+        $cleanIDs = array_filter(array_unique(explode(',', $ids)), static function($var){ return !empty($var);});
         foreach ($cleanIDs as $cleanID) {
             $this->findModel($cleanID)->removeFromProtocol();
         }

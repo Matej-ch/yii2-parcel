@@ -40,4 +40,6 @@ return [
     'change_account' => 'Zmeniť účet',
     'change_pickup_address' => 'Zmeniť adresu vyzdvihnutia',
     'send_btn' => 'Poslať pod účtom {name}',
+    'not_removed_from_protokol' => 'Nepodarilo sa odstrániť',
+    'status_not_changed' =>  'Stav sa nepodarilo zmeniť',
 ];

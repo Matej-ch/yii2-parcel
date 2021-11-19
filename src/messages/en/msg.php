@@ -38,4 +38,6 @@ return [
     'change_account' => 'Change account',
     'change_pickup_address' => 'Change pickup address',
     'send_btn' => 'Send with account {name}',
+    'not_removed_from_protokol' => 'Not removed from protocol',
+    'status_not_changed' =>  'State was not changed',
 ];
