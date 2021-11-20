@@ -6,7 +6,7 @@ use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\parcel\models\ParcelModelMap */
+/* @var $model \matejch\parcel\models\ParcelModelMap */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

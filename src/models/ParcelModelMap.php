@@ -76,7 +76,7 @@ class ParcelModelMap extends ActiveRecord
         return true;
     }
 
-    public static function getFunctions()
+    public static function getFunctions(): array
     {
         return [
             'createCifShipment' => Parcel::t('msg','createCifShipment'),
@@ -95,7 +95,7 @@ class ParcelModelMap extends ActiveRecord
             new PickupAddress()
         ];
 
-        $names = array_map(function ($m) {
+        $names = array_map(static function ($m) {
             return $m->getClassName();
         },$models);
 
@@ -112,17 +112,17 @@ class ParcelModelMap extends ActiveRecord
             new ConsumerAddress(['scenario' => $scenario])
         ];
 
-        $names = array_map(function ($m) {
+        $names = array_map(static function ($m) {
             return $m->getClassName();
         },$models);
 
         return array_combine($names,$models);
     }
 
-    public static function prepareMap($map)
+    public static function prepareMap($map): string
     {
-        return Json::encode(array_map(function($m) {
-            return array_filter($m, function($v) { return !is_null($v) && $v !== ''; });
+        return Json::encode(array_map(static function($m) {
+            return array_filter($m, static function($v) { return !is_null($v) && $v !== ''; });
         },$map));
     }
 

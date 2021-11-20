@@ -4,15 +4,15 @@ use matejch\parcel\Parcel;
 use yii\helpers\Json;
 
 /* @var $form yii\widgets\ActiveForm */
-/* @var $model app\modules\parcel\models\ParcelModelMap */
+/* @var $model \matejch\parcel\models\ParcelModelMap */
 
 $selectedModel = Yii::$app->request->get('m');
 $order = new $selectedModel();
 
 if(Yii::$app->request->get('f') === 'createCifShipment') {
-    $map = $model->cifShipmentMap('map');
+    $map = $model::cifShipmentMap('map');
 } else {
-    $map = $model->mipShipmentMap('map');
+    $map = $model::mipShipmentMap('map');
 }
 
 if(!$model->isNewRecord) {

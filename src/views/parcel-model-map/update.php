@@ -2,7 +2,7 @@
 
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\parcel\models\ParcelModelMap */
+/* @var $model \matejch\parcel\models\ParcelModelMap */
 
 use matejch\parcel\Parcel;
 
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = Parcel::t('msg', 'update');
  ?>
 <div class="parcel-model-map-update mt-20 w-full px-4">
 
-    <?= $this->render('@app/views/templates/_title', ['title' => $this->title]) ?>
+    <?= $this->render('../templates/_title', ['title' => $this->title]) ?>
 
     <?= $this->render('_form', [
         'model' => $model,
