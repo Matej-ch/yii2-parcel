@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="solver-alt-place-view mt-20 w-full px-4">
 
-    <?= $this->render('@app/views/templates/_title', ['title' => $this->title]) ?>
+    <?= $this->render('../templates/_title', ['title' => $this->title]) ?>
 
     <?= DetailView::widget([
         'model' => $model,
