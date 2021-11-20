@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('../templates/_navbar') ?>
 
-    <p>
+    <p style="display: flex;align-items:baseline;">
         <?= Html::a(Parcel::t('msg','printEndOfDay'), ['cif-shipment/print-day'], ['class' => 'btn btn-success','title' => Parcel::t('msg','printEndOfDay_hint')]) ?>
-        <label for="menuToggle" class="toggleButton md-button md-button--raised">?</label>
+        <label for="menuToggle" class="toggleButton md-button md-button--raised" style="margin-left: 1em">?</label>
     </p>
 
     <?= GridView::widget([

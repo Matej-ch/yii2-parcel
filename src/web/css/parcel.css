@@ -19,8 +19,8 @@
     cursor: pointer;
     -webkit-transition: all .3s;
     transition: all .3s;
-    height: 6rem;
-    width: 6rem;
+    height: 3rem;
+    width: 3rem;
 }
 
 .md-button:hover{
