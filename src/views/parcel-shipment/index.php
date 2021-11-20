@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {delete}',
                 'buttons' => [
-                    'view' => function($url , $model) { return  Html::a('<i class="fas fa-eye"></i>',$url);},
-                    'delete' => function($url , $model) { return Html::a('<i class="fas fa-trash"></i>',$url,['data' => ['method' => 'post',
+                    'view' => static function($url , $model) { return  Html::a('<i class="bi bi-eye"></i>',$url);},
+                    'delete' => static function($url , $model) { return Html::a('<i class="bi bi-trash"></i>',$url,['data' => ['method' => 'post',
                         'confirm' => Parcel::t('msg','delete_msg'),]]);},
                 ]
             ],

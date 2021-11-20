@@ -41,6 +41,7 @@ Setup
     'placeurl' => 'https://balikomat.sps-sro.sk/alternativneMiesta.xml',
     /* random key for saving parcel account information in database, file can be also used */
     'key' => '',
+    /* array of models that are allowed for creating model maps and packages */
     'models' => ['app\models\Order','app\models\Complaint'],
     'pickUpAddressModel' => '\app\models\Address'
 ]
@@ -82,3 +83,7 @@ Command for loading parcel delivery places exists
 ```php
 ./yii parcel/parcel-shop/init
 ```
+
+#### 4. Create parcel model map for your models
+
+For creating model map you need set 'pickUpAddressModel' in your module setting and at least one model in 'models'

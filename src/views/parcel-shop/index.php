@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\parcel\models\ParcelShopSearch */
+/* @var $searchModel \matejch\parcel\models\ParcelShopSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Parcel::t('msg', 'solver_alt_places');
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}',
                 'buttons' => [
-                    'view' => function($url , $model) { return  Html::a('<i class="fas fa-eye"></i>',$url);},
+                    'view' => static function($url , $model) { return  Html::a('<i class="bi bi-eye"></i>',$url);},
                 ]
             ],
             'type',
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'workDays' =>[
                 'attribute' => 'workDays',
                 'format' => 'raw',
-                'value' => function($model) {
+                'value' => static function($model) {
                     return $model->getWorkDays();
                 }
             ],

@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('../templates/_navbar') ?>
 
     <p>
-        <?= Html::a('<i class="fas fa-plus" aria-hidden="true"></i> ' . Parcel::t('msg', 'create'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="bi bi-plus-circle" aria-hidden="true"></i> ' . Parcel::t('msg', 'create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,13 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{update} {delete}',
                 'buttons' => [
                     'view' => static function ($url, $model) {
-                        return Html::a('<i class="fas fa-eye"></i>', $url);
+                        return Html::a('<i class="bi bi-eye"></i>', $url);
                     },
                     'update' => static function ($url, $model) {
-                        return Html::a('<i class="fas fa-pencil-alt"></i>', $url);
+                        return Html::a('<i class="bi bi-pencil"></i>', $url);
                     },
                     'delete' => static function ($url, $model) {
-                        return Html::a('<i class="fas fa-trash"></i>', $url, ['data' => ['method' => 'post',
+                        return Html::a('<i class="bi bi-trash"></i>', $url, ['data' => ['method' => 'post',
                             'confirm' => Parcel::t('msg', 'delete_msg')]]);
                     },
                 ]

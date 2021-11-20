@@ -4,7 +4,7 @@ use matejch\parcel\Parcel;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\parcel\models\ParcelShop */
+/* @var $model \matejch\parcel\models\ParcelShop */
 
 $this->title = $model->place_id;
 $this->params['breadcrumbs'][] = ['label' => Parcel::t('msg', 'Parcel accounts'), 'url' => ['parcel-account/index']];

@@ -13,6 +13,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
+/** @property Parcel $module */
 class ParcelModelMapController extends Controller
 {
     public function behaviors()
@@ -69,13 +70,13 @@ class ParcelModelMapController extends Controller
             }
         }
 
-        $pickUpAdrressModel = Parcel::getInstance()->pickUpAddressModel;
+        $pickUpAddressModel = Parcel::getInstance()->pickUpAddressModel;
 
         return $this->render('create', [
             'model' => $model,
             'models' => array_combine($this->module->models,$this->module->models),
-            'functions' => $model->getFunctions(),
-            'pickUpAddress' => new $pickUpAdrressModel(),
+            'functions' => $model::getFunctions(),
+            'pickUpAddress' => new $pickUpAddressModel(),
         ]);
     }
 
@@ -100,7 +101,7 @@ class ParcelModelMapController extends Controller
         return $this->render('update', [
             'model' => $model,
             'models' => array_combine($this->module->models,$this->module->models),
-            'functions' => $model->getFunctions(),
+            'functions' => $model::getFunctions(),
             'pickUpAddress' => new $pickUpAdrressModel(),
         ]);
     }
