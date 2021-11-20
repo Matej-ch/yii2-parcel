@@ -7,18 +7,20 @@
     filter: alpha(opacity=70);
 }
 .md-button{
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 500;
     font-size: 1em;
-    padding: 8px;
-    min-width: 32px;
-    border-radius: 64px;
+    border-radius: 9999px;
     border: none;
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
     -webkit-transition: all .3s;
     transition: all .3s;
+    height: 6rem;
+    width: 6rem;
 }
 
 .md-button:hover{
@@ -26,12 +28,12 @@
 }
 
 .md-button.md-button--raised{
-    background-color: rgba(39, 68, 231, 1);
+    background-color: #007bff;
     color: rgb(255,255,255);
 }
 
 .md-button.md-button--raised:hover{
-    background-color: rgba(39, 68, 231, 1);
+    background-color: #0069d9;
 }
 .md-card{
     background-color: rgb(255,255,255);
