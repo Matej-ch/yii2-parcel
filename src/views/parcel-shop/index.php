@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}',
                 'buttons' => [
-                    'view' => static function($url , $model) { return  Html::a('<i class="bi bi-eye"></i>',$url);},
+                    'view' => function($url , $model) { return  Html::a($this->render('../icons/_eye'),$url);},
                 ]
             ],
             'type',
@@ -52,5 +52,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
-    ]); ?>
+    ]) ?>
 </div>

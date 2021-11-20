@@ -2,6 +2,8 @@
 
 /**
  * @var string $title
+ * @var string $class
+ * @var string $style
 */
 ?>
 

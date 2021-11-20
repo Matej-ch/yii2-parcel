@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\parcel\models\ParcelShipment */
+/* @var $model \matejch\parcel\models\ParcelShipment */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Parcel::t('msg', 'Parcel accounts'), 'url' => ['parcel-account/index']];
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('../templates/_title', ['title' => $this->title]) ?>
 
     <p>
-        <?= Html::a('<i class="fas fa-trash" aria-hidden="true"></i> ' . Parcel::t('msg','delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a($this->render('../icons/_trash') . ' ' . Parcel::t('msg','delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Parcel::t('msg','delete_msg'),

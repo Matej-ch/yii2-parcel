@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('../templates/_navbar') ?>
 
     <p>
-        <?= Html::a('<i class="bi bi-plus-circle" aria-hidden="true"></i> ' . Parcel::t('msg', 'create'),
+        <?= Html::a($this->render('../icons/_plus') . ' ' . Parcel::t('msg', 'create'),
             ['create', 'm' => Parcel::getInstance()->models[0], 'f' => 'createCifShipment'],
             ['class' => 'btn btn-success']) ?>
     </p>
@@ -30,11 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
                 'buttons' => [
-                    'update' => static function ($url, $model) {
-                        return Html::a('<i class="bi bi-pencil"></i>', ['update', 'id' => $model->id, 'm' => $model->model, 'f' => $model->function]);
+                    'update' => function ($url, $model) {
+                        return Html::a($this->render('../icons/_pencil'), ['update', 'id' => $model->id, 'm' => $model->model, 'f' => $model->function]);
                     },
-                    'delete' => static function ($url, $model) {
-                        return Html::a('<i class="bi bi-trash"></i>', $url, ['data' => ['method' => 'post',
+                    'delete' => function ($url, $model) {
+                        return Html::a($this->render('../icons/_trash'), $url, ['data' => ['method' => 'post',
                             'confirm' => 'Are you sure you want to delete this item?',]]);
                     },
                 ]
@@ -66,5 +66,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
         ],
-    ]); ?>
+    ]) ?>
 </div>
