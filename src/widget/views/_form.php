@@ -22,7 +22,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
     <?php $weight = $model->weight; ?>
 <?php } ?>
 
-<label ><?= Yii::t('msg','map_loading_values')?></label>
+<label ><?= Yii::t('parcel/msg','map_loading_values')?></label>
 <?php if(isset($maps) && !empty($maps)) { ?>
     <?= Html::dropDownList('map',$maps[0]->id ?? '',
         ArrayHelper::map($maps,'id','name'),
@@ -31,7 +31,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
 
 <div class="container-flex-new">
     <div class="container-flex-new w-full" style="align-items: center;">
-        <label for="PackageCount"><?= Yii::t('msg','package_count')?></label>
+        <label for="PackageCount"><?= Yii::t('parcel/msg','package_count')?></label>
         <div class="py-1">
             <input name="PackageCount" id="PackageCount" value="1" type="number" step="1" min="1"  class="form-control">
         </div>
@@ -55,7 +55,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
                         <?= $form->name() ?>
                     </h4>
                     <div class="container-flex-new">
-                        <div><?= Yii::t('msg','change_pickup_address') ?>:&nbsp;</div>
+                        <div><?= Yii::t('parcel/msg','change_pickup_address') ?>:&nbsp;</div>
                         <div><?= Html::dropDownList('',$pickUpAddressModel->id,ArrayHelper::map($addresses,'id','meno'),
                                 ['class' => 'form-control','id' => 'pickup-address-dropdown','data-url' => Url::to(['parcel/pickup-address/get-data','map' => $maps[0]->id ?? ''])])?>
                         </div>
@@ -105,7 +105,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
 
                             <?= $shipForm->field($form,$attribute)->textInput([
                                 'name'=>"shipment[".$form->getClassName()."][1][$attribute]",
-                                'prompt'=>Yii::t('msg','prompt'),
+                                'prompt'=> Yii::t('parcel/msg','prompt'),
                                 'value'=>!empty($valueFromAttr) ? $valueFromAttr : $form->{$attribute},
                                 'class' => ($attribute === 'reffnr') ? 'map-inputs form-control package-reffnr' : 'map-inputs form-control package-weight',
                                 'id' => strtolower($form->getClassName()) ."-$attribute-1",
@@ -114,7 +114,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
                         <?php } else { ?>
                             <?= $shipForm->field($form,$attribute)->textInput([
                                 'name'=>"shipment[".$form->getClassName()."][$attribute]",
-                                'prompt'=>Yii::t('msg','prompt'),
+                                'prompt'=> Yii::t('parcel/msg','prompt'),
                                 'value'=>!empty($valueFromAttr) ? $valueFromAttr : $form->{$attribute},
                                 'class' => 'map-inputs form-control',
                                 'disabled' => $inputEnabled]) ?>
@@ -136,7 +136,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
 
                                 <?= $shipForm->field($form,$attribute)->textInput([
                                     'name' => "shipment[".$form->getClassName()."][1][$attribute]",
-                                    'prompt' => Yii::t('msg','prompt'),
+                                    'prompt' => Yii::t('parcel/msg','prompt'),
                                     'value' => !empty($valueFromAttr) ? $valueFromAttr : $form->{$attribute},
                                     'class' => ($attribute === 'reffnr') ? 'map-inputs form-control package-reffnr' : 'map-inputs form-control package-weight',
                                     'id' => strtolower($form->getClassName()) ."-$attribute-1",
@@ -148,7 +148,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
                                 <?= $shipForm->field($form,$attribute,$validation)
                                     ->textInput([
                                         'name'=>"shipment[".$form->getClassName()."][$attribute]",
-                                        'prompt'=>Yii::t('msg','prompt'),
+                                        'prompt'=>Yii::t('parcel/msg','prompt'),
                                         'value'=> !empty($valueFromAttr) ? $valueFromAttr : $form->{$attribute},
                                         'class' => 'map-inputs form-control',
                                         'disabled' => $inputEnabled])
@@ -168,7 +168,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
                             <?= $shipForm->field($form,$attribute)
                                 ->dropDownList($value['values'],[
                                     'name'=>"shipment[".$form->getClassName()."][$attribute]",
-                                    'prompt'=>Yii::t('msg','prompt'),
+                                    'prompt'=>Yii::t('parcel/msg','prompt'),
                                     'value' => $valueFromAttr,
                                     'class' => 'map-inputs form-control',
                                     'disabled' => $inputEnabled])
@@ -183,11 +183,11 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
 </div>
 
 <div class="container-flex-new" style="justify-content: space-between">
-    <?= Html::submitButton(Yii::t('msg','send_btn',['name' => $account->name]),['class'=>'btn btn-success','id' =>'send-to-parcel']) ?>
+    <?= Html::submitButton(Yii::t('parcel/msg','send_btn',['name' => $account->name]),['class'=>'btn btn-success','id' =>'send-to-parcel']) ?>
     <span id="send-to-parcel-msg"></span>
 
     <div class="container-flex-new">
-        <div><?= Yii::t('msg','change_account')?>:&nbsp;</div>
+        <div><?= Yii::t('parcel/msg','change_account')?>:&nbsp;</div>
         <div>
             <?= Html::dropDownList('accountId','',ArrayHelper::map($accounts,'id','name'),['class' => 'form-control', 'id' => 'account-dropdown']) ?>
         </div>
@@ -200,7 +200,7 @@ $decodedMap = Json::decode($maps[0]->map ?? '');
 
 <?php
 
-$btnMsg = Yii::t('msg','send_btn',['name' => '']);
+$btnMsg = Yii::t('parcel/msg','send_btn',['name' => '']);
 
 $parcelCreateScript = <<< JS
 

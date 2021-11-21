@@ -42,16 +42,20 @@ class ParcelForm extends Widget
     {
         parent::init();
 
+        \Yii::setAlias('@matejch/parcel',__DIR__. '/..');
+
+        $this->registerTranslations();
+
         if(!isset($this->model)) {
-            throw new InvalidConfigException(Yii::t('msg', 'Please specify the "model" property in widget.'));
+            throw new InvalidConfigException(Yii::t('parcel/msg', 'Please specify the "model" property in widget.'));
         }
 
         if(!isset($this->function)) {
-            throw new InvalidConfigException(Yii::t('msg', 'Please specify the "function" property in widget.'));
+            throw new InvalidConfigException(Yii::t('parcel/msg', 'Please specify the "function" property in widget.'));
         }
 
         if(!in_array(get_class($this->model),Yii::$app->getModule('parcel')->models)) {
-            throw new InvalidConfigException(Yii::t('msg', 'Please specify the VALID "model" in widget.'));
+            throw new InvalidConfigException(Yii::t('parcel/msg', 'Please specify the VALID "model" in widget.'));
         }
     }
 
@@ -66,7 +70,7 @@ class ParcelForm extends Widget
 
         $account = ParcelAccount::findDefault();
         if(!$account) {
-            return Yii::t('msg', 'account_not_found');
+            return Yii::t('parcel/msg', 'account_not_found');
         }
 
         $forms = ParcelModelMap::cifShipmentMap();
@@ -99,5 +103,21 @@ class ParcelForm extends Widget
             'accounts' => ParcelAccount::find()->select(['id','name'])->orderBy(['default' => SORT_DESC])->all(),
             'rbacColumnRules' => $this->rbacColumnRules
         ]);
+    }
+
+    public function registerTranslations()
+    {
+        if (Yii::$app->has('i18n')) {
+            Yii::$app->i18n->translations['parcel/*'] = [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'sourceLanguage' => 'en',
+                'forceTranslation' => true,
+                'basePath' => '@matejch/parcel/messages',
+                'fileMap' => [
+                    'parcel/msg' => 'msg.php',
+                    'parcel/model' => 'model.php',
+                ],
+            ];
+        }
     }
 }

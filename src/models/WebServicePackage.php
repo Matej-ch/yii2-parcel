@@ -4,7 +4,7 @@
 namespace matejch\parcel\models;
 
 
-use matejch\parcel\Parcel;
+use Yii;
 
 /**
  * @property string $reffnr
@@ -29,8 +29,8 @@ class WebServicePackage extends ServiceBase
     public function attributeLabels()
     {
        return [
-           'reffnr' => Parcel::t('model','reffnr'),
-           'weight' => Parcel::t('model','weight'),
+           'reffnr' => Yii::t('parcel/model','reffnr'),
+           'weight' => Yii::t('parcel/model','weight'),
        ];
     }
 
@@ -44,17 +44,17 @@ class WebServicePackage extends ServiceBase
     public function attributeMaps()
     {
         return [
-            'reffnr' => Parcel::t('model','reffnr'),
+            'reffnr' => Yii::t('parcel/model','reffnr'),
             'weight' => [
                 'type' => 'input',
-                'label' => Parcel::t('model','weight')
+                'label' => Yii::t('parcel/model','weight')
             ]
         ];
     }
 
     public function name()
     {
-        return Parcel::t('model','webServicePackage');
+        return Yii::t('parcel/model','webServicePackage');
     }
 
     public function isPickUpAddress()
