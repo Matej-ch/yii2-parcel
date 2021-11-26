@@ -4,6 +4,7 @@
 namespace matejch\parcel\widget;
 
 
+use matejch\parcel\assets\ParcelFormAsset;
 use matejch\parcel\models\Cod;
 use matejch\parcel\models\ParcelAccount;
 use matejch\parcel\models\ParcelModelMap;
@@ -54,7 +55,7 @@ class ParcelForm extends Widget
             throw new InvalidConfigException(Yii::t('parcel/msg', 'Please specify the "function" property in widget.'));
         }
 
-        if(!in_array(get_class($this->model),Yii::$app->getModule('parcel')->models)) {
+        if(!in_array(get_class($this->model), Yii::$app->getModule('parcel')->models, true)) {
             throw new InvalidConfigException(Yii::t('parcel/msg', 'Please specify the VALID "model" in widget.'));
         }
     }
@@ -62,6 +63,13 @@ class ParcelForm extends Widget
     public function run()
     {
         parent::run();
+
+        $view = $this->getView();
+
+        /** it goes to js */
+        $btnMsg = Yii::t('parcel/msg','send_btn',['name' => '']);
+
+        ParcelFormAsset::register($view);
 
         $maps = ParcelModelMap::find()
             ->where(['function' => $this->function,'model' => get_class($this->model)])

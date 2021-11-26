@@ -15,9 +15,9 @@ class ParcelFormAsset extends AssetBundle
         'js/parcelForm.min.js',
     ];
 
-    public $jsOptions = [
+    /*public $jsOptions = [
         'position' => View::POS_HEAD,
-    ];
+    ];*/
 
     public $depends = [
         'yii\web\YiiAsset',
